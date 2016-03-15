@@ -1,54 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.agmip.ui.workbench</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+  <groupId>org.agmip.ui.workbench</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
-    <name>AgMIP Workbench Parent POM</name>
-    <repositories>
-        <!--
+  <name>AgMIP Workbench Parent POM</name>
+  <repositories>
+    <!--
         Repository hosting NetBeans modules, especially APIs.
         Versions are based on IDE releases, e.g.: RELEASE691
         To create your own repository, use: nbm:populate-repository
         -->
         <repository>
-            <id>netbeans</id>
-            <name>NetBeans</name>
-            <url>http://bits.netbeans.org/nexus/content/groups/netbeans/</url>
+          <id>netbeans</id>
+          <name>NetBeans</name>
+          <url>http://bits.netbeans.org/nexus/content/groups/netbeans/</url>
         </repository>
-    </repositories>
+      </repositories>
 
-    <build>
+      <build>
         <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>nbm-maven-plugin</artifactId>
-                    <version>3.13</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <brandingToken>${brandingToken}</brandingToken>
-                        <cluster>${brandingToken}</cluster>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
-                </plugin>
-            </plugins>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>nbm-maven-plugin</artifactId>
+              <version>3.13</version>
+              <extensions>true</extensions>
+              <configuration>
+                <brandingToken>${brandingToken}</brandingToken>
+                <cluster>${brandingToken}</cluster>
+                <etcConfFile>src/main/resources/launcher.conf</etcConfFile>
+                <licenseName>BSD 3-Clause License</licenseName>
+                <licenseFile>LICENSE</licenseFile>
+                <keystorealias>agmipsign</keystorealias>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-jar-plugin</artifactId>
+              <version>2.4</version>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.1</version>
+              <configuration>
+              </configuration>
+            </plugin>
+          </plugins>
         </pluginManagement>
-    </build>
+      </build>
 
-    <properties>
+      <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <netbeans.version>RELEASE802</netbeans.version>
         <brandingToken>agmipworkbench</brandingToken>
-    </properties>
-</project>
+      </properties>
+    </project>
